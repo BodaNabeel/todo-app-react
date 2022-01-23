@@ -1,12 +1,17 @@
 import { useState } from "react";
 import InputForm from "./components/InputForm";
-import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
 
 const intialTodos = [
   {
     id: 0,
     task: "task 1",
-    completed: false,
+    isCompleted: false,
+  },
+  {
+    id: 1,
+    task: "task 2",
+    isCompleted: false,
   },
 ];
 function App() {
@@ -20,7 +25,7 @@ function App() {
 
       <InputForm todos={todos} setTodos={setTodos} />
 
-      <TodoItem todos={todos}/>
+      <TodoList todos={todos} setTodos={setTodos} />
     </>
   );
 }
