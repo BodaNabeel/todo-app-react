@@ -1,9 +1,11 @@
-* {
+*, ** {
   margin: 0;
   box-sizing: border-box;
 }
 html {
   font-size: 62.5%;
+  line-height: 1.15; 
+  -webkit-text-size-adjust: 100%; 
 }
 body {
   margin: 0;
@@ -13,7 +15,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #071013;
+  background-color: #1a3e61;
+  color: #ffff;
 }
 
 code {
@@ -22,7 +25,8 @@ code {
 }
 header {
   text-align: center;
-  background-color: #23b5d3;
+  background-color: #2574b2;
+  box-shadow: 0 0.4rem 1rem 0.2rem black;
   padding: 1rem 0;
 }
 
@@ -31,16 +35,44 @@ header {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 4rem;
   max-width: 80rem;
+  column-gap: 1.2rem;
 }
 input {
   height: 3rem;
   width: 50%;
+  outline: none;
+  border: none;
 }
 button {
+  background-color: #1a3e61;
+  color: #ffff;
+  border: 2px solid #2574b2;
+  width: 5%;
+}
+
+/* Todo Items */
+ul {
+  /* to remove the by default margin & padding of UL  */
+  margin:0;
+  padding:0; 
+
+  display: flex;
+  align-items: center;
+  max-width: 80rem;
+  flex-direction: column;
+  row-gap: 1.2rem;
+
+  margin: 0 auto;
+  margin-top: 2rem;
 }
 li {
+  background-color: #215a8f;
   font-size: 2rem;
-  color: #DFE0E2
+  color: #dfe0e2;
+  list-style: none;
+  width: 55%;
+  padding: 0.8rem 2rem;
+  border-radius: 1.2rem;
 }
