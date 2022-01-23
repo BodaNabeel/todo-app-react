@@ -28,6 +28,7 @@ function InputForm({ todos, setTodos }) {
       <input
         type="text"
         id="task-name"
+        className="input-field"
         onChange={handleChange}
         placeholder="name of task.."
         value={inputValue}
