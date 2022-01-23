@@ -6,6 +6,9 @@ function InputForm({ todos, setTodos }) {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
+  const resetValue = () => {
+    setInputValue("");
+  };
   const getTask = () => {
     if (inputValue !== "") {
       setTodos((prvState) => {
@@ -14,8 +17,9 @@ function InputForm({ todos, setTodos }) {
           { id: uuidv4(), task: inputValue, isCompleted: false },
         ];
       });
+      resetValue();
     } else {
-      alert("task can't be empty")
+      alert("task can't be empty");
     }
   };
 
@@ -26,6 +30,7 @@ function InputForm({ todos, setTodos }) {
         id="task-name"
         onChange={handleChange}
         placeholder="name of task.."
+        value={inputValue}
       />
       <button type="submit" onClick={getTask}>
         +
