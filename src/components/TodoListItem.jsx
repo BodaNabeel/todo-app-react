@@ -1,10 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 
 function TodoListItem({ todos, setTodos, todo }) {
   const taskInput = useRef();
+  const keepEditing = useRef();
   const [taskName, settaskName] = useState(todo.task);
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!taskInput.current.contains(event.target)) {
+        taskInput.current.disabled = true;
+        taskInput.current.blur();
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.addEventListener("mousedown", handler);
+    };
+  });
 
   const editTaskName = (id, value) => {
     settaskName(value);
@@ -14,11 +28,9 @@ function TodoListItem({ todos, setTodos, todo }) {
       }
       return item;
     });
-    console.log(updatedTodos);
   };
   const enableEdit = () => {
     taskInput.current.disabled = false;
-
     taskInput.current.focus();
   };
   const deleteTask = (id) => {
