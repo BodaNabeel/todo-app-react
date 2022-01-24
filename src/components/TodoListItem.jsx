@@ -4,21 +4,20 @@ import { BiEditAlt } from "react-icons/bi";
 
 function TodoListItem({ todos, setTodos, todo }) {
   const taskInput = useRef();
-  const keepEditing = useRef();
   const [taskName, settaskName] = useState(todo.task);
 
   useEffect(() => {
     const handler = (event) => {
-      if (!taskInput.current.contains(event.target)) {
+      if (
+        !taskInput.current.contains(event.target) &&
+        !taskInput.current.disabled
+      ) {
         taskInput.current.disabled = true;
         taskInput.current.blur();
       }
     };
     document.addEventListener("mousedown", handler);
-    return () => {
-      document.addEventListener("mousedown", handler);
-    };
-  });
+  }, []);
 
   const editTaskName = (id, value) => {
     settaskName(value);
@@ -42,7 +41,10 @@ function TodoListItem({ todos, setTodos, todo }) {
   const changeTaskState = (id) => {
     const updatedTodos = todos.map((item) => {
       if (id === item.id) {
-        return { ...item, isCompleted: !item.isCompleted };
+        return {
+          ...item,
+          isCompleted: !item.isCompleted,
+        };
       }
       return item;
     });
@@ -66,6 +68,7 @@ function TodoListItem({ todos, setTodos, todo }) {
         }}
         value={taskName}
       />
+
       <div className="buttons">
         <input type="checkbox" onClick={(event) => changeTaskState(todo.id)} />
         <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
