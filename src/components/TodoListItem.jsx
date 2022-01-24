@@ -28,16 +28,21 @@ function TodoListItem({ todos, setTodos, todo }) {
       return item;
     });
   };
+
+  
   const enableEdit = () => {
     taskInput.current.disabled = false;
     taskInput.current.focus();
   };
+
   const deleteTask = (id) => {
     const updatedTodos = todos.filter((item) => {
       return id !== item.id;
     });
     setTodos(updatedTodos);
   };
+
+
   const changeTaskState = (id) => {
     const updatedTodos = todos.map((item) => {
       if (id === item.id) {
@@ -50,6 +55,8 @@ function TodoListItem({ todos, setTodos, todo }) {
     });
     setTodos(updatedTodos);
   };
+
+
   return (
     <li
       key={todo.id}
@@ -70,7 +77,11 @@ function TodoListItem({ todos, setTodos, todo }) {
       />
 
       <div className="buttons">
-        <input type="checkbox" onClick={(event) => changeTaskState(todo.id)} />
+        <input
+          type="checkbox"
+          defaultChecked={todo.isCompleted}
+          onClick={(event) => changeTaskState(todo.id)}
+        />
         <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
         <BiEditAlt onClick={enableEdit} />
       </div>
