@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputForm from "./components/InputForm";
 import TodoList from "./components/TodoList";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const intialTodos = [
   {
@@ -15,7 +16,7 @@ const intialTodos = [
   },
 ];
 function App() {
-  const [todos, setTodos] = useState(intialTodos);
+  const [todos, setTodos] = useLocalStorage('task', intialTodos);
 
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
       <InputForm todos={todos} setTodos={setTodos} />
 
       <TodoList todos={todos} setTodos={setTodos} />
+
     </>
   );
 }
