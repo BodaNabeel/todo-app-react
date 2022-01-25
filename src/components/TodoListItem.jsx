@@ -5,17 +5,17 @@ import { BiEditAlt } from "react-icons/bi";
 function TodoListItem({ todos, setTodos, todo }) {
   const taskInput = useRef();
   const [taskName, settaskName] = useState(todo.task);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const handler = (event) => {
-      if (null &&
-        !taskInput.current.contains(event.target) &&
-        !taskInput.current.disabled
-      ) {
-        taskInput.current.disabled = true;
+      if (taskInput.current && !taskInput.current.contains(event.target)) {
+        setIsEditing(false);
       }
     };
     document.addEventListener("mousedown", handler);
+
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   const editTaskName = (id, value) => {
@@ -30,8 +30,7 @@ function TodoListItem({ todos, setTodos, todo }) {
   };
 
   const enableEdit = () => {
-    taskInput.current.disabled = false;
-    taskInput.current.focus();
+    setIsEditing(!isEditing);
   };
 
   const deleteTask = (id) => {
@@ -63,16 +62,19 @@ function TodoListItem({ todos, setTodos, todo }) {
           : { textDecoration: "none" }
       }
     >
-      <input
-        ref={taskInput}
-        className="task-input"
-        disabled
-        onChange={(event) => {
-          editTaskName(todo.id, event.target.value);
-        }}
-        value={taskName}
-      />
-
+      {isEditing ? (
+        <input
+          autoFocus
+          ref={taskInput}
+          className="task-input"
+          onChange={(event) => {
+            editTaskName(todo.id, event.target.value);
+          }}
+          value={taskName}
+        />
+      ) : (
+        <p>{taskName}</p>
+      )}
       <div className="buttons">
         <input
           type="checkbox"
