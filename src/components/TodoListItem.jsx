@@ -8,12 +8,11 @@ function TodoListItem({ todos, setTodos, todo }) {
 
   useEffect(() => {
     const handler = (event) => {
-      if (
+      if (null &&
         !taskInput.current.contains(event.target) &&
         !taskInput.current.disabled
       ) {
         taskInput.current.disabled = true;
-        taskInput.current.blur();
       }
     };
     document.addEventListener("mousedown", handler);
@@ -26,7 +25,7 @@ function TodoListItem({ todos, setTodos, todo }) {
         return { ...item, task: value };
       }
       return item;
-    })
+    });
     setTodos(updatedTodos);
   };
 
