@@ -1,11 +1,12 @@
-*, ** {
+*,
+** {
   margin: 0;
   box-sizing: border-box;
 }
 html {
   font-size: 62.5%;
-  line-height: 1.15; 
-  -webkit-text-size-adjust: 100%; 
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -58,8 +59,8 @@ button {
 /* Todo Items */
 ul {
   /* to remove the by default margin & padding of UL  */
-  margin:0;
-  padding:0; 
+  margin: 0;
+  padding: 0;
 
   display: flex;
   justify-content: center;
