@@ -26,10 +26,10 @@ function TodoListItem({ todos, setTodos, todo }) {
         return { ...item, task: value };
       }
       return item;
-    });
+    })
+    setTodos(updatedTodos);
   };
 
-  
   const enableEdit = () => {
     taskInput.current.disabled = false;
     taskInput.current.focus();
@@ -41,7 +41,6 @@ function TodoListItem({ todos, setTodos, todo }) {
     });
     setTodos(updatedTodos);
   };
-
 
   const changeTaskState = (id) => {
     const updatedTodos = todos.map((item) => {
@@ -55,7 +54,6 @@ function TodoListItem({ todos, setTodos, todo }) {
     });
     setTodos(updatedTodos);
   };
-
 
   return (
     <li
