@@ -10,5 +10,4 @@ function TaskOverview({ todos }) {
   );
 }
 
-
 export default TaskOverview;
