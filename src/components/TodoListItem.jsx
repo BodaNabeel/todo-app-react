@@ -21,7 +21,7 @@ function TodoListItem({ todos, setTodos, todo }) {
         taskInput.current.value.length === 0
       ) {
         alert("task name can't be empty");
-        taskInput.current.className += " outline"
+        taskInput.current.focus()
       }
     };
     document.addEventListener("mousedown", handler);
@@ -65,18 +65,13 @@ function TodoListItem({ todos, setTodos, todo }) {
   };
 
   return (
-    <li
-      key={todo.id}
-      style={
-        todo.isCompleted
-          ? { textDecoration: "line-through" }
-          : { textDecoration: "none" }
-      }
-    >
+    <li key={todo.id}>
       {isEditing ? (
-        <input
+        <textarea
           autoFocus
           ref={taskInput}
+          rows="1"
+          fixed
           className="task-input"
           maxLength="50"
           minLength="1"
@@ -86,16 +81,33 @@ function TodoListItem({ todos, setTodos, todo }) {
           value={taskName}
         />
       ) : (
-        <p>{taskName}</p>
+        <p
+          style={
+            todo.isCompleted
+              ? { textDecoration: "line-through" }
+              : { textDecoration: "none" }
+          }
+          className="task-name"
+        >
+          {taskName}
+        </p>
       )}
       <div className="buttons">
-        <input
-          type="checkbox"
-          defaultChecked={todo.isCompleted}
-          onClick={(event) => changeTaskState(todo.id)}
-        />
-        <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
-        <BiEditAlt onClick={enableEdit} />
+        <div className="done-btn">
+          <input
+            type="checkbox"
+            className="checkbox-old"
+            defaultChecked={todo.isCompleted}
+            onClick={(event) => changeTaskState(todo.id)}
+          />
+          <span className="checkbox-new">✅</span>
+        </div>
+        <span key={todo.id} onClick={(event) => deleteTask(todo.id)}>
+          ❌
+        </span>
+        <span onClick={enableEdit}>📝</span>
+        {/* <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
+        <BiEditAlt onClick={enableEdit} /> */}
       </div>
     </li>
   );

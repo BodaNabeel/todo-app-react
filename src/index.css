@@ -79,6 +79,7 @@ li {
   list-style: none;
   width: 70%;
   padding: 0 2rem;
+  height: 2rem;
   border-radius: 1.2rem;
   height: max-content;
 
@@ -86,22 +87,41 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+.task-name {
+  max-width: 85% ;
+}
 .task-input {
+  /* box-sizing: border-box; */
   background-color: transparent;
   color: #dfe0e2;
   font-size: 2rem;
   width: 85%;
-  height: 2rem;
-  padding: 2rem 0;
+  resize: none;
+  height: 6.2rem;
+  outline: none;
+  border: 2px solid red;
+  padding-top: 1.2rem;
 }
-.task-name {
-  /* width: max-content; */
-  width: 70%;
 
-} 
 .buttons * {
   cursor: pointer;
 }
-.outline {
-  border: 1px solid red
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-old{
+position: absolute;
+margin-top: 0.2rem;
+width: 2rem;
+height: 2rem;
+opacity: 0;
+}
+.checkbox-new {
+ 
+
+}
+.done-btn {
+
 }
