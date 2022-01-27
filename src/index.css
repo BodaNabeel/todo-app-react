@@ -102,3 +102,6 @@ li {
 .buttons * {
   cursor: pointer;
 }
+.outline {
+  border: 1px solid red
+}
