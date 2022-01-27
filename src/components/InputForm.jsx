@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import hideVirtualKeyboard from "../../node_modules/hide-virtual-keyboard/";
 import { v4 as uuidv4 } from "uuid";
 
 function InputForm({ todos, setTodos }) {
   const [inputValue, setInputValue] = useState("");
+
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
   const handleClickDown = (event) => {
     if (event.key === "Enter") {
       getTask();
+      hideVirtualKeyboard();
     }
   };
   const resetValue = () => {
@@ -23,10 +26,9 @@ function InputForm({ todos, setTodos }) {
         ];
       });
       resetValue();
-    } else if (inputValue.length >50) {
-      alert("task name can't be more than 50 charcaters")
-    } 
-    else {
+    } else if (inputValue.length > 50) {
+      alert("task name can't be more than 50 charcaters");
+    } else {
       alert("task can't be empty");
     }
   };
