@@ -137,3 +137,24 @@ li {
 .left-task {
   color:red
 }
+
+
+/* footer */
+.footer {
+  background-color: #215a8f;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+.heart {
+  color: red;
+  font-size: 3rem;
+}
+.link {
+  color: #ffffff;
+  text-decoration: none;
+}
