@@ -49,13 +49,16 @@ input {
   outline: none;
   border: none;
 }
-button {
+.btn-add {
   background-color: #1a3e61;
   color: #ffff;
   border: 2px solid #2574b2;
-  width: 5%;
+  width: 20%;
 }
-
+.input-field, .btn-add {
+  border-radius: 0.4rem;
+  height: 4rem;
+}
 /* Todo Items */
 ul {
   /* to remove the by default margin & padding of UL  */
@@ -102,7 +105,7 @@ li {
   padding-top: 1.2rem;
 }
 
-.buttons * {
+.buttons *, .btn-add {
   cursor: pointer;
   padding: 0.2rem;
 }

@@ -40,8 +40,8 @@ function InputForm({ todos, setTodos }) {
         value={inputValue}
         maxLength={50}
       />
-      <button type="submit" onClick={getTask}>
-        +
+      <button className="btn-add" type="submit" onClick={getTask}>
+        add
       </button>
     </div>
   );
