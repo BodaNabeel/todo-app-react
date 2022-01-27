@@ -105,6 +105,7 @@ li {
 
 .buttons * {
   cursor: pointer;
+  padding:0.2rem
 }
 .buttons {
   display: flex;
