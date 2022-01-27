@@ -15,7 +15,7 @@ function InputForm({ todos, setTodos }) {
     setInputValue("");
   };
   const getTask = () => {
-    if (inputValue !== "") {
+    if (inputValue !== "" && inputValue.length <= 50) {
       setTodos((prvState) => {
         return [
           ...prvState,
@@ -23,7 +23,10 @@ function InputForm({ todos, setTodos }) {
         ];
       });
       resetValue();
-    } else {
+    } else if (inputValue.length >50) {
+      alert("task name can't be more than 50 charcaters")
+    } 
+    else {
       alert("task can't be empty");
     }
   };
@@ -38,7 +41,6 @@ function InputForm({ todos, setTodos }) {
         onKeyDown={handleClickDown}
         placeholder="name of task.."
         value={inputValue}
-        maxLength={50}
       />
       <button className="btn-add" type="submit" onClick={getTask}>
         add

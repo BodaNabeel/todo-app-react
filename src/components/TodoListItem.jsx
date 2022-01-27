@@ -10,7 +10,7 @@ function TodoListItem({ todos, setTodos, todo }) {
       if (
         taskInput.current &&
         !taskInput.current.contains(event.target) &&
-        taskInput.current.value.length > 1
+        taskInput.current.value.length > 1 && taskInput.current.value.length < 50
       ) {
         setIsEditing(false);
       } else if (
@@ -20,6 +20,10 @@ function TodoListItem({ todos, setTodos, todo }) {
       ) {
         alert("task name can't be empty");
         taskInput.current.focus();
+      } else if (taskInput.current &&
+        !taskInput.current.contains(event.target) &&
+        taskInput.current.value.length > 50) {
+          alert("task name can't be more than 50 characters")
       }
     };
     document.addEventListener("mousedown", handler);
@@ -70,8 +74,6 @@ function TodoListItem({ todos, setTodos, todo }) {
           ref={taskInput}
           rows="1"
           className="task-input"
-          maxLength="50"
-          minLength="1"
           onChange={(event) => {
             editTaskName(todo.id, event.target.value);
           }}
