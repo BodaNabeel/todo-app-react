@@ -73,7 +73,7 @@ function TodoListItem({ todos, setTodos, todo }) {
           value={taskName}
         />
       ) : (
-        <p>{taskName}</p>
+        <p className="task-name">{taskName}</p>
       )}
       <div className="buttons">
         <input
