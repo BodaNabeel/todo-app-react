@@ -4,7 +4,7 @@ function TodoListItem({ todos, setTodos, todo }) {
   const taskInput = useRef();
   const [taskName, settaskName] = useState(todo.task);
   const [isEditing, setIsEditing] = useState(false);
-
+  
   useEffect(() => {
     const handler = (event) => {
       if (
@@ -19,7 +19,7 @@ function TodoListItem({ todos, setTodos, todo }) {
         taskInput.current.value.length === 0
       ) {
         alert("task name can't be empty");
-        taskInput.current.focus()
+        taskInput.current.focus();
       }
     };
     document.addEventListener("mousedown", handler);
@@ -69,7 +69,6 @@ function TodoListItem({ todos, setTodos, todo }) {
           autoFocus
           ref={taskInput}
           rows="1"
-          fixed
           className="task-input"
           maxLength="50"
           minLength="1"
