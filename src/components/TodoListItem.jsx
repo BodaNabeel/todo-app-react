@@ -9,8 +9,19 @@ function TodoListItem({ todos, setTodos, todo }) {
 
   useEffect(() => {
     const handler = (event) => {
-      if (taskInput.current && !taskInput.current.contains(event.target)) {
+      if (
+        taskInput.current &&
+        !taskInput.current.contains(event.target) &&
+        taskInput.current.value.length > 1
+      ) {
         setIsEditing(false);
+      } else if (
+        taskInput.current &&
+        !taskInput.current.contains(event.target) &&
+        taskInput.current.value.length === 0
+      ) {
+        alert("task name can't be empty");
+        taskInput.current.className += " outline"
       }
     };
     document.addEventListener("mousedown", handler);
@@ -67,6 +78,8 @@ function TodoListItem({ todos, setTodos, todo }) {
           autoFocus
           ref={taskInput}
           className="task-input"
+          maxLength="50"
+          minLength="1"
           onChange={(event) => {
             editTaskName(todo.id, event.target.value);
           }}
