@@ -7,12 +7,12 @@ import useLocalStorage from "./hooks/useLocalStorage";
 const intialTodos = [
   {
     id: 0,
-    task: "task 1",
+    task: "kiss your homie goodbye!",
     isCompleted: false,
   },
   {
     id: 1,
-    task: "task 2",
+    task: "buy dogecoin because elon musk said so",
     isCompleted: false,
   },
 ];
