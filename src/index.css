@@ -70,7 +70,6 @@ ul {
   row-gap: 1.2rem;
 
   margin: 0 auto;
-  margin-top: 2rem;
 }
 li {
   background-color: #215a8f;
@@ -88,7 +87,7 @@ li {
   align-items: center;
 }
 .task-name {
-  max-width: 85% ;
+  max-width: 85%;
 }
 .task-input {
   /* box-sizing: border-box; */
@@ -105,17 +104,33 @@ li {
 
 .buttons * {
   cursor: pointer;
-  padding:0.2rem
+  padding: 0.2rem;
 }
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.checkbox-old{
-position: absolute;
-margin-top: 0.2rem;
-width: 2rem;
-height: 2rem;
-opacity: 0;
+.checkbox-old {
+  position: absolute;
+  margin-top: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0;
+}
+
+/* task-overview */
+.task-overview {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+  max-width: 100%;
+
+  font-size: 2rem;
+}
+.total-task {
+  color: greenyellow
+}
+.left-task {
+  color:red
 }

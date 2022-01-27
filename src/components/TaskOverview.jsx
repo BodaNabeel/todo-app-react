@@ -3,10 +3,10 @@ import React from "react";
 function TaskOverview({ todos }) {
   const notDoneTodosMap = todos.filter((item) => !item.isCompleted);
   return (
-    <>
-      Tasks: {todos.length} <br />
-      Unfinished: {notDoneTodosMap.length}
-    </>
+    <div className="task-overview">
+      <p className="total-task">Tasks: {todos.length}</p>
+      <p className="left-task">Unfinished: {notDoneTodosMap.length}</p>
+    </div>
   );
 }
 
