@@ -77,19 +77,28 @@ li {
   font-size: 2rem;
   color: #dfe0e2;
   list-style: none;
-  /* width: 55%; */
-  padding: 0.8rem 2rem;
+  width: 70%;
+  padding: 0 2rem;
   border-radius: 1.2rem;
+  height: max-content;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .task-input {
   background-color: transparent;
   color: #dfe0e2;
   font-size: 2rem;
-  width: 70%;
+  width: 85%;
+  height: 2rem;
+  padding: 2rem 0;
 }
+.task-name {
+  /* width: max-content; */
+  width: 70%;
+
+} 
 .buttons * {
   cursor: pointer;
 }
