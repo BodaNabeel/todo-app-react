@@ -3,14 +3,33 @@ import { MdDelete } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 
 function TodoListItem({ todos, setTodos, todo }) {
-  const taskInput = useRef();
+  // const taskInput = useRef();
+  const taskNameToggle = useRef();
   const [taskName, settaskName] = useState(todo.task);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const handler = (event) => {
-      if (taskInput.current && !taskInput.current.contains(event.target)) {
+      // if (taskInput.current && !taskInput.current.contains(event.target)) {
+      //   setIsEditing(false);
+      //   taskNameToggle.current.contentEditable = false;
+      //   console.log(taskNameToggle);
+      // }
+      if (
+        taskNameToggle.current.contentEditable &&
+        !taskNameToggle.current.contains(event.target)
+        && taskNameToggle.current.innerHTML.length <= 50 && taskNameToggle.current.innerHTML.length > 0
+      ) {
+        taskNameToggle.current.contentEditable = false;
         setIsEditing(false);
+       console.log(taskNameToggle.current.innerHTML.length ) 
+      } else if ( taskNameToggle.current.innerHTML.length > 50 && !taskNameToggle.current.contains(event.target)) {
+        alert("task name can't be more than 50 characters")
+        taskNameToggle.current.focus()
+      }
+      else if ( taskNameToggle.current.innerHTML.length === 0 && !taskNameToggle.current.contains(event.target)) {
+        alert("task name can't be empty")
+        taskNameToggle.current.focus()
       }
     };
     document.addEventListener("mousedown", handler);
@@ -22,7 +41,8 @@ function TodoListItem({ todos, setTodos, todo }) {
     settaskName(value);
     const updatedTodos = todos.map((item) => {
       if (id === item.id) {
-        return { ...item, task: value };
+        console.log("working");
+        // return { ...item, task: value };
       }
       return item;
     });
@@ -30,6 +50,8 @@ function TodoListItem({ todos, setTodos, todo }) {
   };
 
   const enableEdit = () => {
+    taskNameToggle.current.contentEditable = true;
+    taskNameToggle.current.focus();
     setIsEditing(!isEditing);
   };
 
@@ -62,10 +84,11 @@ function TodoListItem({ todos, setTodos, todo }) {
           : { textDecoration: "none" }
       }
     >
-      {isEditing ? (
+      {/* {isEditing ? (
         <input
           autoFocus
           ref={taskInput}
+          maxLength={50}
           className="task-input"
           onChange={(event) => {
             editTaskName(todo.id, event.target.value);
@@ -73,8 +96,25 @@ function TodoListItem({ todos, setTodos, todo }) {
           value={taskName}
         />
       ) : (
-        <p className="task-name">{taskName}</p>
-      )}
+        <p 
+        style={taskNameToggle.contentEditable?{border: "2px solid blue"}:{border: "none"}}
+        ref={taskNameToggle} className="task-name">
+          {taskName}
+        </p>
+      )} */}
+      <p
+        style={
+          isEditing
+            ? { border: "2px solid blue", outline: "none" }
+            : { border: "none" }
+        }
+        ref={taskNameToggle}
+        id={todo.id}
+        className="task-name"
+        
+      >
+        {taskName}
+      </p>
       <div className="buttons">
         <input
           type="checkbox"
@@ -82,7 +122,7 @@ function TodoListItem({ todos, setTodos, todo }) {
           onClick={(event) => changeTaskState(todo.id)}
         />
         <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
-        <BiEditAlt onClick={enableEdit} />
+        <BiEditAlt id={todo.id} onClick={enableEdit} />
       </div>
     </li>
   );
