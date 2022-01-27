@@ -1,6 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MdDelete } from "react-icons/md";
-import { BiEditAlt } from "react-icons/bi";
 
 function TodoListItem({ todos, setTodos, todo }) {
   const taskInput = useRef();
@@ -106,8 +104,6 @@ function TodoListItem({ todos, setTodos, todo }) {
           ❌
         </span>
         <span onClick={enableEdit}>📝</span>
-        {/* <MdDelete key={todo.id} onClick={(event) => deleteTask(todo.id)} />
-        <BiEditAlt onClick={enableEdit} /> */}
       </div>
     </li>
   );
