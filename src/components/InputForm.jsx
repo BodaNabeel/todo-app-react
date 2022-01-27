@@ -7,10 +7,10 @@ function InputForm({ todos, setTodos }) {
     setInputValue(event.target.value);
   };
   const handleClickDown = (event) => {
-    if(event.key === "Enter") {
-      getTask()
+    if (event.key === "Enter") {
+      getTask();
     }
-  }
+  };
   const resetValue = () => {
     setInputValue("");
   };
@@ -38,6 +38,7 @@ function InputForm({ todos, setTodos }) {
         onKeyDown={handleClickDown}
         placeholder="name of task.."
         value={inputValue}
+        maxLength={50}
       />
       <button type="submit" onClick={getTask}>
         +
