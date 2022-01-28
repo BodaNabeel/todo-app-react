@@ -67,7 +67,7 @@ function TodoListItem({ todos, setTodos, todo }) {
   };
 
   return (
-    <li key={todo.id}>
+    <li className="list" key={todo.id}>
       {isEditing ? (
         <textarea
           autoFocus
