@@ -143,7 +143,7 @@ li {
 .footer {
   background-color: #215a8f;
 
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;

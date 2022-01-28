@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import Footer from "./components/Footer";
 import InputForm from "./components/InputForm";
 import TaskOverview from "./components/TaskOverview";
 import TodoList from "./components/TodoList";
@@ -30,6 +31,8 @@ function App() {
       <TaskOverview todos={todos} />
 
       <TodoList todos={todos} setTodos={setTodos} />
+
+      <Footer />
     </>
   );
 }
