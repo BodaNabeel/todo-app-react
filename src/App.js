@@ -6,16 +6,7 @@ import TodoList from "./components/TodoList";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const intialTodos = [
-  {
-    id: 0,
-    task: "kiss your homie goodbye!",
-    isCompleted: false,
-  },
-  {
-    id: 1,
-    task: "buy dogecoin because elon musk said so",
-    isCompleted: false,
-  },
+ 
 ];
 function App() {
   const [todos, setTodos] = useLocalStorage("task", intialTodos);
